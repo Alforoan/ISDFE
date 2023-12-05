@@ -1,22 +1,39 @@
-import React from "react";
 import "./Home.scss";
 import { Link } from "react-router-dom";
+import img from "../../images/homepageBg2.jpg";
 
 const Home = () => {
   return (
-    <>
-      <h2>Foster change through customized course building experience</h2>
-      <p>
-        ISD DEsign will hold process documents for building a course for your
-        organization.
-      </p>
-      <Link to="/login">
-        <button className="btn btn-yellow">Log In</button>
-      </Link>
-      <Link to="/signup">
-        <button className="btn btn-secondary">Sign Up</button>
-      </Link>
-    </>
+    <div
+      className="bg-container"
+      style={{
+        backgroundImage: `url(${img})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        height: "100vh",
+        width: "100vw",
+        position: "relative",
+      }}
+    >
+      <div className="info-container d-flex flex-column justify-content-center align-items-left h-100">
+        <h2 className="text-white display-4 info-text">
+          Foster change through customized <br />
+          <span style={{ color: "#ffc107" }}>course building </span>experience
+        </h2>
+        <h5 className="text-white mt-3 mb-4 paragraph">
+          ISD Design will hold process documents for building a course for your
+          organization.
+        </h5>
+        <div>
+          <Link to="/login">
+            <button className="btn btn-yellow btns">Log In</button>
+          </Link>
+          <Link to="/signup">
+            <button className="btn btn-secondary btns">Sign Up</button>
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 };
 
