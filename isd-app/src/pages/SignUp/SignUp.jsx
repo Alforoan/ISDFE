@@ -20,12 +20,12 @@ const errorSchema = yup
 	.object({
 		name: yup
 			.string()
-			.required('Enter your first and last name')
+			.required('Enter your first and last name.')
 			.matches(
 				/^[a-zA-Z]+\s[a-zA-Z]+$/,
 				'Enter both first and last name',
 			),
-		email: yup.string().email().required('Enter email'),
+		email: yup.string().email().required('Enter email.'),
 		password: yup
 			.string()
 			.required('No password provided.')
