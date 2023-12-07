@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SignUp.scss';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -42,14 +42,33 @@ const SignUp = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitting },
+		reset,
 	} = useForm({
 		resolver: yupResolver(errorSchema),
 	});
+	const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-	const onSubmitConsole = data => {
-		//! enter on submit function later
-		console.log(data, 'form data test');
+	const onSubmitConsole = async data => {
+		console.log('dink');
+		//! add submit logic here post api later
+
+		//Clearing success message if still shown
+		setShowSuccessMessage(false);
+
+		// simulating loading time for dev testing
+		await new Promise(resolve => setTimeout(resolve, 5000));
+		console.log(data);
+
+		//Showing success message
+		setShowSuccessMessage(true);
+
+		//Clearing success message
+		setTimeout(() => {
+			setShowSuccessMessage(false);
+		}, 5000);
+
+		reset();
 	};
 
 	return (
@@ -98,8 +117,22 @@ const SignUp = () => {
 				</fieldset>
 
 				<div className='button-container'>
-					<button className='button signup'>Sign Up</button>
-					<button className='button login'>Log In</button>
+					{/* Can replace later for default loading and submission success messages */}
+					{isSubmitting && (
+						<div className='loading-message'>Loading...</div>
+					)}
+					{showSuccessMessage && (
+						<p className='success-message'>
+							Form has been submitted!
+						</p>
+					)}
+
+					<button className='button signup' disabled={isSubmitting}>
+						Sign Up
+					</button>
+					<button className='button login' disabled={isSubmitting}>
+						Log In
+					</button>
 				</div>
 			</form>
 		</div>
