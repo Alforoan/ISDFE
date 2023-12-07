@@ -33,7 +33,8 @@ const errorSchema = yup
 			.matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
 		passwordConfirmation: yup
 			.string()
-			.oneOf([yup.ref('password'), null], 'Passwords must match'),
+			.oneOf([yup.ref('password'), null], 'Passwords must match')
+			.required('Please confirm your password.'),
 	})
 	.required();
 
