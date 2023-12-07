@@ -35,8 +35,8 @@
 		}
 
 		.button-container {
-			margin: 166px 0px 69px 0px;
-			max-width: 608px;
+			margin: 10.375rem 0 4.3125rem 0;
+			max-width: 38rem;
 			width: 100%;
 			display: flex;
 			justify-content: space-between;
@@ -45,11 +45,11 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				max-width: 266px;
+				max-width: 16.625rem;
 				width: 100%;
-				max-height: 58px;
+				max-height: 3.625rem;
 				height: 100%;
-				border-radius: 10px;
+				border-radius: 0.625rem;
 				color: #000;
 				font-size: $font-size-regular;
 				font-style: normal;
@@ -91,22 +91,24 @@
 
 	.form-input {
 		font-size: $font-size-regular;
+
 		label {
 			display: block;
 			font-weight: $fontWeightRegular;
 			line-height: 140%;
 		}
+
 		input {
-			margin-top: 8px;
+			margin-top: 0.5rem;
 			width: 100%;
-			max-height: 48px;
+			max-height: 3rem;
 			height: 100%;
-			border-radius: 4px;
+			border-radius: 0.25rem;
 			border: 1px solid var(--Black-20, rgba(17, 17, 19, 0.2));
 			background: var(--Black-2, rgba(0, 0, 0, 0.02));
 			box-sizing: border-box;
-			font-weight: $font-size-small;
-			padding: 13px 16px;
+			font-weight: 1rem;
+			padding: 0.8125rem 1rem;
 		}
 	}
 }
@@ -137,8 +139,9 @@
 				justify-content: center;
 				align-items: center;
 				flex-direction: column;
-				margin: 40px 0px 60px 0px;
+				margin: 2.5rem 0 3.75rem 0;
 				.button {
+					font-size: $font-size-small;
 					&:first-of-type {
 						margin-right: 0rem;
 						margin-bottom: 1.5rem;
