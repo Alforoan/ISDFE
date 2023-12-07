@@ -1,38 +1,38 @@
 .btn-yellow {
-  background-color: #ffc107;
-  color: black;
-  margin-right: 1rem;
+	background-color: #ffc107;
+	color: black;
+	margin-right: 1rem;
 }
 
 .btn-yellow:hover {
-  background-color: #ffa500;
-  color: black;
+	background-color: #ffa500;
+	color: black;
 }
 
 .info-container {
-  margin-left: 2rem;
+	margin-left: 2rem;
 }
 
 .bg-container::before {
-  content: "";
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* Place the pseudo-element behind the content */
+	content: '';
+	opacity: 0.5;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1; /* Place the pseudo-element behind the content */
 }
 
 .info-text {
-  font-weight: 600;
+	font-weight: 600;
 }
 .paragraph {
-  word-spacing: 2px;
+	word-spacing: 2px;
 }
 
 .btns {
-  width: 9rem;
-  font-weight: 700;
-  font-size: 1.4rem;
+	width: 9rem;
+	font-weight: 700;
+	font-size: 1.4rem;
 }

@@ -1,0 +1,179 @@
+@import '../../styles/variables';
+
+.form-container {
+	color: #000;
+	font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+	height: 100vh;
+	width: 100vw;
+	background-color: $default-background;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: $form-white-background;
+		width: 42.95vw;
+		padding: 0px 55px 0px 55px;
+
+		fieldset {
+			max-width: 611px;
+			width: 100%;
+			position: relative;
+
+			p {
+				font-size: 0.8rem;
+				color: rgb(203, 21, 21);
+				font-weight: $fontWeightBold;
+				visibility: visible;
+				height: 1px;
+				text-align: center;
+				margin-bottom: 14px;
+			}
+		}
+
+		.button-container {
+			position: relative;
+			margin: 10.375rem 0 4.3125rem 0;
+			max-width: 38rem;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+
+			.button {
+				display: flex;
+				cursor: pointer;
+				justify-content: center;
+				align-items: center;
+				max-width: 16.625rem;
+				width: 100%;
+				max-height: 3.625rem;
+				height: 100%;
+				border-radius: 0.625rem;
+				color: #000;
+				font-size: $font-size-regular;
+				font-style: normal;
+				font-weight: $fontWeightMedium;
+				line-height: normal;
+
+				&:disabled {
+					background-color: #808080 !important;
+					color: #fff !important;
+					cursor: not-allowed !important;
+				}
+			}
+
+			.signup {
+				background-color: #ffe8a3;
+
+				&:hover {
+					background-color: darken(#ffe8a3, 10%);
+				}
+
+				&:active {
+					box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); // Inset shadow on click
+				}
+			}
+
+			.login {
+				background-color: rgba(204, 204, 204, 0.4);
+
+				&:hover {
+					background-color: darken(rgba(204, 204, 204, 0.4), 10%);
+				}
+
+				&:active {
+					box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); // Inset shadow on click
+				}
+			}
+		}
+
+		.loading-message,
+		.success-message {
+			position: absolute;
+			top: -100%;
+			left: 0;
+			width: 100%;
+			text-align: center;
+		}
+
+		.success-message {
+			color: green; /* Customize the color of the success message */
+		}
+	}
+
+	.form-title {
+		font-size: $font-size-large;
+		font-weight: $fontWeightBold;
+		margin: 2.9375rem 0rem 2.3125rem 0rem;
+	}
+
+	.form-input {
+		font-size: $font-size-regular;
+
+		label {
+			display: block;
+			font-weight: $fontWeightRegular;
+			line-height: 140%;
+		}
+
+		input {
+			margin-top: 0.5rem;
+			width: 100%;
+			max-height: 3rem;
+			height: 100%;
+			border-radius: 0.25rem;
+			border: 1px solid var(--Black-20, rgba(17, 17, 19, 0.2));
+			background: var(--Black-2, rgba(0, 0, 0, 0.02));
+			box-sizing: border-box;
+			font-weight: 1rem;
+			padding: 0.8125rem 1rem;
+		}
+	}
+}
+
+@media (min-width: 20rem) and (max-width: 75rem) {
+	.form-container {
+		.form {
+			width: 75vw;
+		}
+	}
+}
+
+@media (min-width: 20rem) and (max-width: 100rem) {
+	.button-container {
+		.button {
+			&:first-of-type {
+				margin-right: 2rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 20rem) and (max-width: 48rem) {
+	.form-container {
+		.form {
+			.button-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				margin: 2.5rem 0 3.75rem 0;
+
+				.loading-message,
+				.success-message {
+					top: -40%;
+				}
+				.button {
+					font-size: $font-size-small;
+					&:first-of-type {
+						margin-right: 0rem;
+						margin-bottom: 1.5rem;
+					}
+				}
+			}
+		}
+	}
+}

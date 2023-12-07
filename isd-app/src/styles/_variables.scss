@@ -1,0 +1,46 @@
+//Font install
+$fontPath: './fonts/Inter/';
+
+// Font weights
+$fontWeightBold: 700;
+$fontWeightSemiBold: 600;
+$fontWeightMedium: 500;
+$fontWeightRegular: 400;
+
+// Font Sizes
+$font-size-large: 3rem;
+$font-size-medium: 2rem;
+$font-size-regular: 1.5rem;
+$font-size-small: 1rem;
+
+@font-face {
+	font-family: 'Inter';
+	src: url(#{$fontPath}Inter-Bold.ttf) format('ttf');
+	font-weight: $fontWeightBold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inter';
+	src: url(#{$fontPath}Inter-Medium.ttf) format('ttf');
+	font-weight: $fontWeightMedium;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inter';
+	src: url(#{$fontPath}Inter-Regular.ttf) format('ttf');
+	font-weight: $fontWeightRegular;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inter';
+	src: url(#{$fontPath}Inter-SemiBold.ttf) format('ttf');
+	font-weight: $fontWeightSemiBold;
+	font-style: normal;
+}
+
+//background Colors
+$default-background: #f6f8fa;
+$form-white-background: #fff;
