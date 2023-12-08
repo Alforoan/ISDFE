@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+
+.login {
+    fieldset:not(:first-of-type) {
+        margin-top: 1rem;
+    }
+    
+    .button {
+        padding: 0.75rem 0.625rem;
+        align-self: stretch;
+        border-radius: 0.25rem;
+        background: $button-blue-background;
+        color: $white-text;
+        font-size: $font-size-small;
+        font-weight: $fontWeightSemiBold;
+        margin-top: 2rem;
+    }
+}
