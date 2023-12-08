@@ -14,9 +14,11 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 		background-color: $form-white-background;
 		width: 42.95vw;
-		padding: 0px 55px 0px 55px;
+		padding: 3rem 7.5rem;
+		border-radius: 0.5rem;
 
 		fieldset {
 			max-width: 611px;
@@ -106,19 +108,19 @@
 
 	.form-title {
 		font-size: $font-size-large;
-		font-weight: $fontWeightBold;
-		margin: 2.9375rem 0rem 2.3125rem 0rem;
+		font-weight: $fontWeightMedium;
+		margin-bottom: 3rem;
 	}
 
 	.form-input {
-		font-size: $font-size-regular;
-
+	
 		label {
 			display: block;
-			font-weight: $fontWeightRegular;
+			font-weight: $fontWeightMedium;
 			line-height: 140%;
+			font-size: 0.875rem;
 		}
-
+	
 		input {
 			margin-top: 0.5rem;
 			width: 100%;
@@ -126,10 +128,10 @@
 			height: 100%;
 			border-radius: 0.25rem;
 			border: 1px solid var(--Black-20, rgba(17, 17, 19, 0.2));
-			background: var(--Black-2, rgba(0, 0, 0, 0.02));
 			box-sizing: border-box;
-			font-weight: 1rem;
+			font-weight: $fontWeightRegular;
 			padding: 0.8125rem 1rem;
+			font-size: $font-size-small;
 		}
 	}
 }
