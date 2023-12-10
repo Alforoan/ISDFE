@@ -2,6 +2,8 @@
 @import 'bootstrap/scss/bootstrap';
 // Importing constants
 @import './styles/variables.scss';
+//Importing common form styles
+@import './styles/formstyles.scss';
 
 body {
 	font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
