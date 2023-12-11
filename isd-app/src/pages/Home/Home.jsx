@@ -31,6 +31,9 @@ const Home = () => {
           <Link to="/signup">
             <button className="btn btn-secondary btns">Sign Up</button>
           </Link>
+          <Link to="/request">
+            <button>Temp Request Page</button>
+          </Link>
         </div>
       </div>
     </div>
