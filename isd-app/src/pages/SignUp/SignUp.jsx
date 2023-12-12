@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import GoogleIcon from '../../assets/icons/google.svg';
 
 const MyInput = React.forwardRef(({ name, type, label, ...rest }, ref) => {
 	return (
@@ -80,7 +82,7 @@ const SignUp = () => {
 						name='name'
 						label='Full Name '
 						type='input'
-						placeholder='Thomas'
+						placeholder='First and lst name'
 						{...register('name')}
 					/>
 					<p>{errors.name?.message}</p>
@@ -90,7 +92,7 @@ const SignUp = () => {
 						name='email'
 						label='Email '
 						type='input'
-						placeholder='abc@gmail.com'
+						placeholder='name@company.com'
 						{...register('email')}
 					/>
 					<p>{errors.email?.message}</p>
@@ -128,11 +130,24 @@ const SignUp = () => {
 					)}
 
 					<button className='button signup' disabled={isSubmitting}>
-						Sign Up
+						Create account
 					</button>
-					<button className='button login' disabled={isSubmitting}>
-						Log In
-					</button>
+					<span>or</span>
+					{/* backend for google auth needs to be implemented on the backend later */}
+					<a href='/backend-route' className='button google-login'>
+						<div>
+							<img
+								src={GoogleIcon}
+								alt='Google Login'
+								className='google-icon'
+							/>
+							<span>Sign in with Google</span>
+						</div>
+					</a>
+					<div className='back-to-login'>
+						<p>Already have an account?</p>&nbsp;
+						<Link to='/login'>Log in</Link>
+					</div>
 				</div>
 			</form>
 		</div>

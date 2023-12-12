@@ -1,32 +1,34 @@
 @import '../../styles/variables';
 
 .form-container {
-
 	.form {
-
 		.button-container {
 			position: relative;
-			margin: 10.375rem 0 4.3125rem 0;
+			margin-top: 1rem;
 			max-width: 38rem;
 			width: 100%;
 			display: flex;
-			justify-content: space-between;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
 
 			.button {
 				display: flex;
 				cursor: pointer;
 				justify-content: center;
 				align-items: center;
-				max-width: 16.625rem;
-				width: 100%;
-				max-height: 3.625rem;
+				align-self: stretch;
+				min-height: 2.875rem;
 				height: 100%;
-				border-radius: 0.625rem;
-				color: #000;
-				font-size: $font-size-regular;
+				border-radius: 0.25rem;
+				color: $white-text;
+				font-size: $font-size-small;
 				font-style: normal;
-				font-weight: $fontWeightMedium;
+				font-weight: $fontWeightSemiBold;
 				line-height: normal;
+				transition-duration: 0.3s;
+				box-sizing: border-box;
+				padding: 12px 0px;
 
 				&:disabled {
 					background-color: #808080 !important;
@@ -35,14 +37,70 @@
 				}
 			}
 
-			.signup {
-				background-color: #ffe8a3;
+			.google-login {
+				display: flex;
+				padding: 1rem;
+				justify-content: center;
+				align-items: center;
+				align-self: stretch;
+				gap: $font-size-small;
+				border-radius: 9999px;
+				border: 2px solid #e2e8f0;
+				color: #1e293b;
+				font-feature-settings: 'clig' off, 'liga' off;
+				font-family: 'Figtree', system-ui, Avenir, Helvetica, Arial,
+					sans-serif;
+				font-size: 1rem;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 24px; /* 150% */
+				letter-spacing: -0.24px;
+				margin-bottom: 3rem;
 
 				&:hover {
-					background-color: darken(#ffe8a3, 10%);
+					background-color: #e2e8f0; /* Change background color on hover */
 				}
 
 				&:active {
+					background-color: #cfd8e3; /* Change background color on active state */
+				}
+			}
+
+			.google-icon {
+				margin-right: 1rem;
+			}
+
+			span,
+			.back-to-login {
+				font-size: $font-size-small;
+				font-weight: $fontWeightSemiBold;
+				line-height: 24px;
+				a {
+					font-weight: $fontWeightSemiBold;
+				}
+			}
+
+			span {
+				margin: 2rem 0rem 2rem 0rem;
+			}
+
+			.back-to-login {
+				margin: 0rem 0rem 2rem 0rem;
+				display: flex;
+				p {
+					margin: 0px;
+				}
+			}
+
+			.signup {
+				background-color: $button-blue-background;
+
+				&:hover {
+					background-color: darken($button-blue-background, 10%);
+				}
+
+				&:active {
+					background-color: #044a80; // Adjusted background color for active state
 					box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); // Inset shadow on click
 				}
 			}
@@ -71,42 +129,6 @@
 
 		.success-message {
 			color: green; /* Customize the color of the success message */
-		}
-	}
-}
-
-@media (min-width: 20rem) and (max-width: 100rem) {
-	.button-container {
-		.button {
-			&:first-of-type {
-				margin-right: 2rem;
-			}
-		}
-	}
-}
-
-@media (min-width: 20rem) and (max-width: 48rem) {
-	.form-container {
-		.form {
-			.button-container {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				flex-direction: column;
-				margin: 2.5rem 0 3.75rem 0;
-
-				.loading-message,
-				.success-message {
-					top: -40%;
-				}
-				.button {
-					font-size: $font-size-small;
-					&:first-of-type {
-						margin-right: 0rem;
-						margin-bottom: 1.5rem;
-					}
-				}
-			}
 		}
 	}
 }
