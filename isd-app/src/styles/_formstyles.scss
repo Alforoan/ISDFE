@@ -17,7 +17,7 @@
 		justify-content: center;
 		background-color: $form-white-background;
 		width: 42.95vw;
-		padding: 3rem 7%;
+		padding: 3rem 7.5rem;
 		border-radius: 0.5rem;
 
 		fieldset {
@@ -32,7 +32,7 @@
 				visibility: visible;
 				height: 1px;
 				text-align: center;
-				margin-bottom: 14px;
+				margin-bottom: 16px;
 			}
 		}
 	}
@@ -40,22 +40,20 @@
 	.form-title {
 		font-size: $font-size-large;
 		font-weight: $fontWeightMedium;
-		margin-bottom: 3rem;
+		margin-bottom: $font-size-large;
 	}
 
 	.form-input {
-	
 		label {
 			display: block;
 			font-weight: $fontWeightMedium;
-			line-height: 140%;
 			font-size: 0.875rem;
 		}
-	
+
 		input {
 			margin-top: 0.5rem;
 			width: 100%;
-			max-height: 3rem;
+			min-height: 3rem;
 			height: 100%;
 			border-radius: 0.25rem;
 			border: 1px solid var(--Black-20, rgba(17, 17, 19, 0.2));
@@ -71,6 +69,49 @@
 	.form-container {
 		.form {
 			width: 75vw;
+		}
+	}
+}
+
+@media (min-width: 20rem) and (max-width: 48rem) {
+	.form-container {
+		.form {
+			.button-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				margin: 2.5rem 0 3.75rem 0;
+
+				.loading-message,
+				.success-message {
+					top: -40%;
+				}
+
+				.back-to-login {
+					text-wrap: nowrap;
+					display: flex;
+					align-items: center;
+					flex-direction: column;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 20rem) and (max-width: 40.875rem) {
+	.form-container {
+		.form {
+			padding: 3rem 2rem;
+			.button-container {
+				.google-icon {
+					margin-right: 0rem;
+				}
+
+				.google-login div span {
+					display: none;
+				}
+			}
 		}
 	}
 }

@@ -15,36 +15,43 @@ $font-size-small: 1rem;
 
 @font-face {
 	font-family: 'Inter';
-	src: url(#{$fontPath}Inter-Bold.ttf) format('ttf');
+	src: url(#{$fontPath}Inter/Inter-Bold.ttf) format('ttf');
 	font-weight: $fontWeightBold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Inter';
-	src: url(#{$fontPath}Inter-Medium.ttf) format('ttf');
+	src: url(#{$fontPath}Inter/Inter-Medium.ttf) format('ttf');
 	font-weight: $fontWeightMedium;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Inter';
-	src: url(#{$fontPath}Inter-Regular.ttf) format('ttf');
+	src: url(#{$fontPath}Inter/Inter-Regular.ttf) format('ttf');
 	font-weight: $fontWeightRegular;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'Inter';
-	src: url(#{$fontPath}Inter-SemiBold.ttf) format('ttf');
+	src: url(#{$fontPath}Inter/Inter-SemiBold.ttf) format('ttf');
 	font-weight: $fontWeightSemiBold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Figtree';
+	src: url(#{$fontPath}Figtree/Figtree-Medium.ttf) format('ttf');
+	font-weight: $fontWeightMedium;
 	font-style: normal;
 }
 
 //background Colors
 $default-background: #f6f8fa;
 $form-white-background: #fff;
-$button-blue-background: #0774C3;
+$button-blue-background: #0774c3;
 
 //font Colors
 $white-text: #fff;

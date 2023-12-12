@@ -1,20 +1,16 @@
 @import '../../styles/variables';
 
 .login {
-    fieldset:not(:first-of-type) {
-        margin-top: 1rem;
-    }
-    
-    .button {
-        padding: 0.75rem 0.625rem;
-        align-self: center;
-        border-radius: 0.25rem;
-        background: $button-blue-background;
-        color: $white-text;
-        font-size: $font-size-small;
-        font-weight: $fontWeightSemiBold;
-        margin-top: 2rem;
-        max-width: 611px;
-        width: 100%;
-    }
+	fieldset:not(:first-of-type) {
+		margin-top: 1rem;
+	}
+
+	.button {
+		border-radius: 0.25rem;
+		color: $white-text;
+		font-size: $font-size-small;
+		font-weight: $fontWeightSemiBold;
+		max-width: 611px;
+		width: 100%;
+	}
 }
