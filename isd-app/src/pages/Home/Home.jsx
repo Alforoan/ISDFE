@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import img from '../../assets/images/homepageBg2.jpg';
 
 const Home = () => {
-	return (
+return (
 		<div
 			className='bg-container'
 			style={{
