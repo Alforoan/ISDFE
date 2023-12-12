@@ -82,7 +82,7 @@ const SignUp = () => {
 						name='name'
 						label='Full Name '
 						type='input'
-						placeholder='First and lst name'
+						placeholder='First and last name'
 						{...register('name')}
 					/>
 					<p>{errors.name?.message}</p>
