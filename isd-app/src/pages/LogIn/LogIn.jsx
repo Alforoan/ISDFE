@@ -1,22 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./LogIn.scss";
 import GoogleIcon from "../../assets/icons/google.svg";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import PropTypes from "prop-types";
-
-const MyInput = React.forwardRef(({ name, type, label, ...rest }, ref) => {
-  return (
-    <div className="form-input">
-      <label htmlFor={name}>{label}</label>
-      <input type={type} name={name} {...rest} ref={ref} />
-    </div>
-  );
-});
-
-MyInput.displayName = "MyInput";
+import { MyInput } from "../../utilities/utils";
 
 const errorSchema = yup
   .object({
@@ -68,7 +57,6 @@ const LogIn = () => {
             placeholder="name@company.com"
             {...register("email")}
           />
-          {console.log(errors)}
           <p>{errors.email?.message}</p>
         </fieldset>
         <fieldset>
@@ -112,12 +100,6 @@ const LogIn = () => {
       </form>
     </div>
   );
-};
-
-MyInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
 };
 
 export default LogIn;
