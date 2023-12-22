@@ -1,12 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import LogIn from "./pages/LogIn/Login";
-import SignUp from "./pages/SignUp/SignUp";
-import Request from "./pages/Request/Request";
-import CourseRequest from "./pages/CourseRequest/CourseRequest";
-import AccountSetUpEmail from "./pages/AccountSetUp/Email/Email";
-import AccountSetUpNamePassword from "./pages/AccountSetUp/NamePassword/NamePassword";
-import AccountSetUpCompanyName from "./pages/AccountSetUp/CompanyName/CompanyName";
+import {
+  Home,
+  LogIn,
+  SignUp,
+  Request,
+  CourseRequest,
+  AccountSetUpEmail,
+  AccountSetUpNamePassword,
+  AccountSetUpCompanyName,
+} from "./pages";
 
 function App() {
   return (
