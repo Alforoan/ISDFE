@@ -11,6 +11,7 @@ $fontWeightRegular: 400;
 $font-size-large: 3rem;
 $font-size-medium: 2rem;
 $font-size-regular: 1.5rem;
+$font-size-semi-regular: 1.125rem;
 $font-size-small: 1rem;
 
 @font-face {
@@ -54,4 +55,5 @@ $form-white-background: #fff;
 $button-blue-background: #0774c3;
 
 //font Colors
-$white-text: #fff;
+$font-color-white: #fff;
+$font-color-grey: #767676;
