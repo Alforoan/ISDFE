@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { MyInput } from "../../../utilities/utils";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useNavigate } from "react-router-dom";
 
 const errorSchema = yup
   .object({
@@ -16,9 +17,9 @@ const CompanyName = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(errorSchema) });
-
+  const navigate = useNavigate();
   const submitCompanyName = (data) => {
-    console.log(data);
+    navigate("/accountsetup/users");
   };
 
   return (
