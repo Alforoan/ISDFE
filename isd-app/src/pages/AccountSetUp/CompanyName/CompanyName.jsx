@@ -16,12 +16,11 @@ const CompanyName = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(errorSchema) });
+
   const submitCompanyName = (data) => {
     console.log(data);
   };
-  const handleClick=()=>{
 
-  }
   return (
     <div className="form-container account-setup">
       <form className="form" onSubmit={handleSubmit(submitCompanyName)}>
@@ -38,7 +37,7 @@ const CompanyName = () => {
           <p>{errors.company_name?.message}</p>
         </fieldset>
         <div className="button-container">
-          <button className="button signup" onClick={handleClick}>Next</button>
+          <button className="button signup">Next</button>
         </div>
       </form>
     </div>
