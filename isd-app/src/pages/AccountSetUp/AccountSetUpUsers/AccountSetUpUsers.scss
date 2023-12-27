@@ -1,0 +1,23 @@
+@import 'src/styles/variables';
+
+
+.invitation-input {
+  label {
+    display: block;
+    font-weight: $fontWeightMedium;
+    font-size: 0.875rem;
+  }
+  input {
+    width: 100%;
+    min-height: 3rem;
+    height: 100%;
+    border-radius: 0.25rem;
+    border: 1px solid var(--Black-20, rgba(17, 17, 19, 0.2));
+    box-sizing: border-box;
+    font-weight: $fontWeightRegular;
+    padding: 0.8125rem 1rem;
+    font-size: $font-size-small;
+  }
+}
+
+
