@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { Link } from "react-router-dom";
 import GoogleIcon from "../../assets/icons/google.svg";
 import { MyInput } from "../../utilities/utils";
+import React from "react";
 
 const errorSchema = yup
   .object({
@@ -66,7 +67,7 @@ const SignUp = () => {
         <fieldset>
           <MyInput
             name="name"
-            label="Full Name "
+            label="Full Name"
             type="input"
             placeholder="First and last name"
             {...register("name")}

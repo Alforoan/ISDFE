@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export const MyInput = React.forwardRef(
-  ({ name, type, label, ...rest }, ref) => {
+  ({ name, id, type, label, ...rest }, ref) => {
     return (
       <div className="form-input">
-        <label htmlFor={name}>{label}</label>
-        <input type={type} name={name} {...rest} ref={ref} />
+        <label htmlFor={id ?? name}>{label}</label>
+        <input type={type} id={id ?? name} name={name} {...rest} ref={ref} />
       </div>
     );
   }
