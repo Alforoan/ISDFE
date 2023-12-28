@@ -6,17 +6,19 @@ const useCompanyAuthApi = () => {
 	const abortController = new AbortController();
 
 	const submitForm = async formData => {
-		const { data, error } = await create(formData, {
-			signal: abortController.signal,
-		});
+		try {
+			const { data, error } = await create(formData, {
+				signal: abortController.signal,
+			});
+			if (error) {
+				throw error;
+			}
 
-		if (error) {
-			throw error;
-		}
-
-		if (data) {
+			if (data) {
+				return data;
+			}
+		} finally {
 			abortController.abort();
-			return data;
 		}
 	};
 
