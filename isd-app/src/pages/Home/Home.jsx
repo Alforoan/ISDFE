@@ -1,5 +1,6 @@
 import "./Home.scss";
 import { Link } from "react-router-dom";
+import React from "react";
 import img from "../../assets/images/homepageBg2.jpg";
 
 const Home = () => {

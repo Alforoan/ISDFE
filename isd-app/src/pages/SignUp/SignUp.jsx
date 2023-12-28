@@ -76,7 +76,7 @@ const SignUp = () => {
         <fieldset>
           <MyInput
             name="email"
-            label="Email "
+            label="Email"
             type="input"
             placeholder="name@company.com"
             {...register("email")}
