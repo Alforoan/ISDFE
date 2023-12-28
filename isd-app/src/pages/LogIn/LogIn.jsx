@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { MyInput } from "../../utilities/utils";
+import React from "react";
 
 const errorSchema = yup
   .object({
