@@ -82,8 +82,9 @@
 				flex-direction: column;
 				margin: 2.5rem 0 3.75rem 0;
 				.loading-message,
-				.success-message {
-					top: -40%;
+				.success-message,
+				.error-message {
+					top: 60%;
 				}
 				.back-to-login {
 					text-wrap: nowrap;
