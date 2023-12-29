@@ -95,7 +95,6 @@ const AccountSetUpUsers = () => {
 										'email',
 									)
 								}
-
 							/>
 						</Form.Item>
 						<Form.Item label='Role' name={`role${index}`} rules={[{required:true,message: 'Please select a role'}]}>
