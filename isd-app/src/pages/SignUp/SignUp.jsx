@@ -67,12 +67,14 @@ const SignUp = () => {
 		} catch (error) {
 			setSubmitError(true);
 
+
 			setTimeout(() => {
 				setSubmitError(false);
 			}, 3000);
 		}
 		reset();
 	};
+
 
 	return (
 		<div className='form-container'>
