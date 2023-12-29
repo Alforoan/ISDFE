@@ -60,7 +60,6 @@ const AccountSetUpUsers = () => {
 	const addTeammates = () => {
 		setInvitations([...invitations, { email: '', role: '' }]);
 	};
-
 	return (
 		<div className='form-container account-setup'>
 			<Form
@@ -73,10 +72,19 @@ const AccountSetUpUsers = () => {
 				<h4 className='form-subtitle'>
 					Let’s invite the users and assign roles
 				</h4>
-
 				{invitations.map((item, index) => (
 					<Flex key={index} gap={'middle'}>
-						<Form.Item label='Email' name={`email${index}`}>
+						<Form.Item label='Email' name={`email${index}`} rules={[{ required: true, message: 'Please input email' },{
+							validator(rule,value){
+								return new Promise((resolve,reject)=>{
+									if(value===undefined || value.length===0 || value.match(email)!=null){
+										resolve();
+									}else{
+										reject("Input should be a valid email");
+									}
+								})
+							}
+						}]}>
 							<Input
 								placeholder='input email'
 								value={item.email}
@@ -89,7 +97,7 @@ const AccountSetUpUsers = () => {
 								}
 							/>
 						</Form.Item>
-						<Form.Item label='Role' name={`role${index}`}>
+						<Form.Item label='Role' name={`role${index}`} rules={[{required:true,message: 'Please select a role'}]}>
 							<Select
 								options={options}
 								style={{ height: 48, width: 270 }}
@@ -102,7 +110,6 @@ const AccountSetUpUsers = () => {
 						</Form.Item>
 					</Flex>
 				))}
-
 				<label
 					onClick={addTeammates}
 					style={{
