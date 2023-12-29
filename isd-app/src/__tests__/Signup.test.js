@@ -4,18 +4,28 @@ import {
   screen,
   waitFor,
   cleanup,
+  configure,
 } from "@testing-library/react";
 import React from "react";
 import { SignUp } from "../pages";
 import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
+
+const mockStore = configureStore();
 
 describe("SignUp Component", () => {
+  let store;
+
   beforeEach(() => {
+    store = mockStore({});
     render(
-      <BrowserRouter>
-        <SignUp />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <SignUp />
+        </BrowserRouter>
+      </Provider>
     );
   });
 

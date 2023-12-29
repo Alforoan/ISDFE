@@ -3,19 +3,32 @@ import React from "react";
 import { LogIn } from "../pages";
 import { BrowserRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
+import configureStore from "redux-mock-store";
+import { Provider } from "react-redux";
 
-beforeEach(() => {
-  render(
-    <BrowserRouter>
-      <LogIn />
-    </BrowserRouter>
-  );
-});
+const mockStore = configureStore();
 
-test("should render create button and navigate to /signup", () => {
-  const createButton = screen.getByText("Create");
-  expect(createButton).toBeInTheDocument();
+describe("Login Component", () => {
+  let store;
 
-  fireEvent.click(createButton);
-  expect(window.location.pathname).toBe("/signup");
+  beforeEach(() => {
+    store = mockStore({});
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <LogIn />
+        </BrowserRouter>
+      </Provider>
+    );
+  });
+
+  it("should render create button and navigate to /signup", () => {
+    const createButton = screen.getByText("Create");
+    expect(createButton).toBeInTheDocument();
+
+    fireEvent.click(createButton);
+
+    const pathname = window.location.pathname;
+    expect(pathname).toBe("/signup");
+  });
 });

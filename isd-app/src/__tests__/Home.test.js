@@ -1,29 +1,43 @@
-import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
-import Home from "../pages/Home/Home";
+import { render, fireEvent, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
+import configureStore from "redux-mock-store";
 import "@testing-library/jest-dom";
+import Home from "../pages/Home/Home";
+import { Provider } from "react-redux";
 
-beforeEach(() => {
-  render(
-    <BrowserRouter>
-      <Home />
-    </BrowserRouter>
-  );
-});
+const mockStore = configureStore();
 
-test("should render Log In button and navigate to /login", () => {
-  const logInButton = screen.getByText("Log In");
-  expect(logInButton).toBeInTheDocument();
+describe("Home Component", () => {
+  let store;
 
-  fireEvent.click(logInButton);
-  expect(window.location.pathname).toBe("/login");
-});
+  beforeEach(() => {
+    store = mockStore({});
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Home />
+        </BrowserRouter>
+      </Provider>
+    );
+  });
 
-test("should render Sign Up button and navigate to /signup", () => {
-  const signUpButton = screen.getByText("Sign Up");
-  expect(signUpButton).toBeInTheDocument();
+  it("should render Log In button and navigate to /login", () => {
+    const logInButton = screen.getByText("Log In");
+    expect(logInButton).toBeInTheDocument();
 
-  fireEvent.click(signUpButton);
-  expect(window.location.pathname).toBe("/signup");
+    fireEvent.click(logInButton);
+
+    const pathname = window.location.pathname;
+    expect(pathname).toBe("/login");
+  });
+
+  it("should render Sign Up button and navigate to /signup", () => {
+    const signUpButton = screen.getByText("Sign Up");
+    expect(signUpButton).toBeInTheDocument();
+
+    fireEvent.click(signUpButton);
+    const pathname = window.location.pathname;
+    expect(pathname).toBe("/signup");
+  });
 });
