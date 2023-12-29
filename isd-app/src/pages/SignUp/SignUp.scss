@@ -119,9 +119,10 @@
 		}
 
 		.loading-message,
-		.success-message {
+		.success-message,
+		.error-message {
 			position: absolute;
-			top: -100%;
+			top: 70%;
 			left: 0;
 			width: 100%;
 			text-align: center;
@@ -129,6 +130,10 @@
 
 		.success-message {
 			color: green; /* Customize the color of the success message */
+		}
+
+		.error-message {
+			color: rgb(203, 21, 21);
 		}
 	}
 }
