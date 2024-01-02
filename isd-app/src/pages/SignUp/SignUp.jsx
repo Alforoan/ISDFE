@@ -20,8 +20,24 @@ const errorSchema = yup
     password: yup
       .string()
       .required("No password provided.")
-      .min(8, "Password is too short - should be 8 chars minimum.")
-      .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
+      .min(8, "Password is too short - should be at least 8 letters.")
+      .matches(
+        /^[a-zA-Z0-9~`!@#$%^&*()_\-+={[}\]\|\\:;"'<,>.\?\/]+$/,
+        "Password can only contain latin letters, numbers and symbols."
+      )
+      .matches(
+        /[A-Z]/,
+        "The password should contain at least one uppercase letter"
+      )
+      .matches(
+        /[a-z]/,
+        "The password should contain at least one lowercase letter"
+      )
+      .matches(
+        /[~`!@#$%^&*()_\-+={[}\]\|\\:;"'<,>.\?\/]/,
+        "The password should contain at least one symbol"
+      )
+      .matches(/[0-9]/, "The password should contain at least one number"),
     passwordConfirmation: yup
       .string()
       .oneOf([yup.ref("password"), null], "Passwords must match")
