@@ -78,8 +78,29 @@ describe("SignUp Component", () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText("Password is too short - should be 8 chars minimum.")
+        screen.getByText(
+          "Password is too short - should be at least 8 letters."
+        )
       ).toBeInTheDocument();
+    });
+  });
+
+  it("should display validation error if passwords do not match", async () => {
+    fireEvent.change(screen.getByLabelText("Password", { selector: "input" }), {
+      target: { value: "1234" },
+    });
+
+    fireEvent.change(
+      screen.getByLabelText("Repeat Password", { selector: "input" }),
+      {
+        target: { value: "123" },
+      }
+    );
+    const createAccountBtn = screen.getByText("Create account");
+    fireEvent.click(createAccountBtn);
+
+    await waitFor(() => {
+      expect(screen.getByText("Passwords must match")).toBeInTheDocument();
     });
   });
 });

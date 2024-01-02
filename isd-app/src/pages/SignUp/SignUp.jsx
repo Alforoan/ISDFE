@@ -125,7 +125,7 @@ const SignUp = () => {
         <fieldset>
           <MyInput
             name="passwordConfirmation"
-            label="Repeat password "
+            label="Repeat Password"
             type="password"
             placeholder="**"
             {...register("passwordConfirmation")}
