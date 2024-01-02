@@ -9,6 +9,7 @@ export default {
   testMatch: ["**/__tests__/**/*.js?(x)", "**/?(*.)+(spec|test).js?(x)"],
   transformIgnorePatterns: ["/node_modules/", "^.+\\.css$"],
   preset: "./jest-preset.json",
-  transform: { "^.+\\.[tj]sx?$": ["babel-jest"] },
+  transform: { "^.+\\.[tj]sx?$": ["babel-jest"], "^.+\\.js$": "esbuild-jest" },
+  setupFilesAfterEnv: ["esm"],
   testEnvironment: "jsdom",
 };
