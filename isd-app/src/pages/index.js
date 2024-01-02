@@ -7,3 +7,4 @@ export { default as AccountSetUpEmail } from "./AccountSetUp/Email/Email";
 export { default as AccountSetUpNamePassword } from "./AccountSetUp/NamePassword/NamePassword";
 export { default as AccountSetUpCompanyName } from "./AccountSetUp/CompanyName/CompanyName";
 export { default as Users } from "./AccountSetUp/Users/Users";
+export { default as Error } from "./Error/Error";
