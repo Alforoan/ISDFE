@@ -60,6 +60,12 @@ const AccountSetUpUsers = () => {
 	const addTeammates = () => {
 		setInvitations([...invitations, { email: '', role: '' }]);
 	};
+	const removeTeammates=()=>{
+		if(invitations.length>1){
+			setInvitations([...invitations.slice(0,invitations.length-1)]);
+		}
+	}
+	const  email=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 	return (
 		<div className='form-container account-setup'>
 			<Form
@@ -77,9 +83,10 @@ const AccountSetUpUsers = () => {
 						<Form.Item label='Email' name={`email${index}`} rules={[{ required: true, message: 'Please input email' },{
 							validator(rule,value){
 								return new Promise((resolve,reject)=>{
-									if(value===undefined || value.length===0 || value.match(email)!=null){
+									if(value===undefined || value.length===0 || email.test(value)){
 										resolve();
 									}else{
+
 										reject("Input should be a valid email");
 									}
 								})
@@ -110,16 +117,25 @@ const AccountSetUpUsers = () => {
 						</Form.Item>
 					</Flex>
 				))}
+				<Flex  style={{width:"100%"}} align={"center"} justify={"space-between"} >
 				<label
 					onClick={addTeammates}
 					style={{
 						cursor: 'pointer',
 						color: '#0774c3',
-						marginRight: 'auto',
 					}}>
 					+ Add teammates
 				</label>
-
+					<label
+						onClick={removeTeammates}
+						style={{
+							cursor: invitations.length>1 ? 'pointer':'not-allowed',
+							color: invitations.length>1 ? "red":"gray",
+						}}
+					>
+						-Remove teammates
+					</label>
+				</Flex>
 				<div className='button-container'>
 					<button type='submit' className='button signup'>
 						Invite all
