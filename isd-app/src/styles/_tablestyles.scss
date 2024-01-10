@@ -78,7 +78,6 @@
 .add-teammates {
 	display: flex;
 	padding: 1.25rem 1.5rem;
-	white-space: nowrap;
 	width: 100%;
 	align-items: center;
 	align-self: stretch;
@@ -102,6 +101,11 @@
 	&:active {
 		color: #053e67;
 	}
+}
+
+.add-teammates-text {
+	max-width: 50px;
+	white-space: nowrap;
 }
 
 // Status and icons

@@ -243,8 +243,12 @@ const Table = ({ tableData, setMembers }) => {
 			</thead>
 			<tbody>
 				{renderTableBody()}
-				<tr className='add-teammates' onClick={addTeammates}>
-					<td colSpan={columns.length}>+ Add teammates</td>
+				<tr
+					className='table-body-row add-teammates'
+					onClick={addTeammates}>
+					<td className='add-teammates-text' colSpan={columns.length}>
+						+ Add teammates
+					</td>
 				</tr>
 			</tbody>
 		</table>
