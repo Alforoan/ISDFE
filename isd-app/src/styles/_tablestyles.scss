@@ -78,6 +78,7 @@
 .add-teammates {
 	display: flex;
 	padding: 1.25rem 1.5rem;
+	min-width: 20rem;
 	width: 100%;
 	align-items: center;
 	align-self: stretch;
@@ -196,6 +197,10 @@
 	}
 
 	.table-header-container {
+		padding: 1.25rem 0.5rem;
+	}
+
+	.add-teammates {
 		padding: 1.25rem 0.5rem;
 	}
 }
