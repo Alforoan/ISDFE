@@ -1,3 +1,5 @@
+@import './variables';
+
 .table-main {
 	color: #000;
 	font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -27,7 +29,7 @@
 	font-size: $font-size-semi-regular;
 	font-weight: $fontWeightMedium;
 	line-height: 28px;
-	padding: 20px 24px;
+	padding: 1.25rem 1.5rem;
 }
 
 .table-header-row {
@@ -36,13 +38,13 @@
 	width: 100%;
 
 	th {
-		padding: 12px 24px;
+		padding: 0.75rem 1.5rem;
 		text-align: left;
 		align-items: center;
 
 		color: var(--Gray-500, #667085);
-		font-size: 12px;
-		font-weight: 500;
+		font-size: $font-size-extra-small;
+		font-weight: $fontWeightMedium;
 		line-height: 18px;
 		white-space: nowrap;
 		vertical-align: middle;
@@ -61,13 +63,13 @@
 }
 
 .td-cell {
-	padding: 16px 24px;
+	padding: 1rem 1.5rem;
 	text-align: left;
 	align-items: center;
 
 	color: var(--Gray-500, #667085);
 	font-size: 14px;
-	font-weight: 400;
+	font-weight: $fontWeightRegular;
 	line-height: 20px;
 	white-space: nowrap;
 	vertical-align: middle;
@@ -75,7 +77,7 @@
 
 .add-teammates {
 	display: flex;
-	padding: 20px 24px;
+	padding: 1.25rem 1.5rem;
 	width: 100%;
 	align-items: center;
 	align-self: stretch;
@@ -83,9 +85,9 @@
 	border: 0px solid var(--Gray-200, #eaecf0);
 
 	color: #0774c3;
-	font-size: 16px;
+	font-size: $font-size-small;
 	font-style: normal;
-	font-weight: 700;
+	font-weight: $fontWeightBold;
 	line-height: 140%;
 	transform-origin: 0.3s;
 
@@ -104,18 +106,18 @@
 // Status and icons
 
 .status {
-	font-size: 12px;
+	font-size: $font-size-extra-small;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: $fontWeightMedium;
 	line-height: 18px;
 	user-select: none;
 }
 
 .status-icon {
-	max-width: 65px;
+	max-width: 4.063rem;
 	width: 100%;
 	display: flex;
-	padding: 2px 5px 2px 5px;
+	padding: 0.125rem 0.3125rem 0.125rem 0.3125rem;
 	justify-content: center;
 
 	box-sizing: content-box;
@@ -125,7 +127,7 @@
 	border-radius: 16px;
 
 	span {
-		font-size: 1.5em; /* Adjust the size as needed */
+		font-size: $font-size-regular; /* Adjust the size as needed */
 	}
 }
 
@@ -170,7 +172,7 @@
 }
 
 .delete {
-	margin-right: 24px;
+	margin-right: 1.5rem;
 }
 
 // Media Queries
@@ -184,23 +186,23 @@
 
 @media (max-width: 60rem) {
 	.td-cell {
-		padding: 16px 8px;
+		padding: 1rem 0.5rem;
 	}
 
 	.table-header-row {
 		th {
-			padding: 12px 8px;
+			padding: 0.75rem 0.5rem;
 		}
 	}
 
 	.table-header-container {
-		padding: 20px 8px;
+		padding: 1.25rem 0.5rem;
 	}
 }
 
 @media (max-width: 40.313rem) {
 	.status-icon {
-		padding: 2px 2px 2px 2px;
+		padding: 0.125rem;
 
 		box-sizing: border-box;
 
