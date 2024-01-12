@@ -4,7 +4,6 @@ import { Flex, Form, Input, Select } from 'antd';
 import useCompanyAuthApi from '../../../utilities/formPostLogic/companyAuthApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUsers } from '../../../redux/slices/companyCreateSlice';
-
 const AccountSetUpUsers = () => {
 	const options = [
 		{ value: 'supervisor', label: 'Instructional design supervisor' },
@@ -86,14 +85,13 @@ const AccountSetUpUsers = () => {
 									if(value===undefined || value.length===0 || email.test(value)){
 										resolve();
 									}else{
-
 										reject("Input should be a valid email");
 									}
 								})
 							}
 						}]}>
 							<Input
-								placeholder='input email'
+								placeholder='Input email'
 								value={item.email}
 								onChange={e =>
 									handleInputChange(
@@ -117,7 +115,7 @@ const AccountSetUpUsers = () => {
 						</Form.Item>
 					</Flex>
 				))}
-				<Flex  style={{width:"100%"}} align={"center"} justify={"space-between"} >
+				<Flex  style={{width:"90%"}} align={"center"} justify={"space-between"} >
 				<label
 					onClick={addTeammates}
 					style={{
