@@ -19,10 +19,10 @@ const TeamMembers = () => {
 		},
 		{
 			id: 2,
-			name: 'Jake',
+			name: 'Justin',
 			status: true,
 			role: 'Stakeholder',
-			email: 'da@da.com',
+			email: 'da33@d33a.com',
 		},
 		{
 			id: 3,
