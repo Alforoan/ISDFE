@@ -80,41 +80,43 @@ const AccountSetUpUsers = () => {
 				</h4>
 				{invitations.map((item, index) => (
 					<Flex key={index} gap={'middle'}>
-						<Form.Item label='Email' name={`email${index}`} rules={[{ required: true, message: 'Please input email' },{
-							validator(rule,value){
-								return new Promise((resolve,reject)=>{
-									if(value===undefined || value.length===0 || email.test(value)){
-										resolve();
-									}else{
+						<div className='email-role-container'>
+							<Form.Item label='Email' name={`email${index}`} rules={[{ required: true, message: 'Please input email' },{
+								validator(rule,value){
+									return new Promise((resolve,reject)=>{
+										if(value===undefined || value.length===0 || email.test(value)){
+											resolve();
+										}else{
 
-										reject("Input should be a valid email");
+											reject("Input should be a valid email");
+										}
+									})
+								}
+							}]}>
+								<Input
+									placeholder='input email'
+									value={item.email}
+									onChange={e =>
+										handleInputChange(
+											e.target.value,
+											index,
+											'email',
+										)
 									}
-								})
-							}
-						}]}>
-							<Input
-								placeholder='input email'
-								value={item.email}
-								onChange={e =>
-									handleInputChange(
-										e.target.value,
-										index,
-										'email',
-									)
-								}
-							/>
-						</Form.Item>
-						<Form.Item label='Role' name={`role${index}`} rules={[{required:true,message: 'Please select a role'}]}>
-							<Select
-								options={options}
-								style={{ height: 48, width: 270 }}
-								placeholder={'Select Role'}
-								value={item.role}
-								onChange={value =>
-									handleInputChange(value, index, 'role')
-								}
-							/>
-						</Form.Item>
+								/>
+							</Form.Item>
+							<Form.Item label='Role' name={`role${index}`} rules={[{required:true,message: 'Please select a role'}]}>
+								<Select
+									className='select'
+									options={options}
+									placeholder={'Select Role'}
+									value={item.role}
+									onChange={value =>
+										handleInputChange(value, index, 'role')
+									}
+								/>
+							</Form.Item>
+						</div>
 					</Flex>
 				))}
 				<Flex  style={{width:"100%"}} align={"center"} justify={"space-between"} >
