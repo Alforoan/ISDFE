@@ -21,6 +21,7 @@ const Table = ({ tableData, setMembers }) => {
 	const isResizingRef = useRef(false);
 	const columns = useColumns();
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isEditing, setIsEditing] = useState(false);
 
 	useEffect(() => {
 		setData(tableData);
@@ -178,7 +179,7 @@ const Table = ({ tableData, setMembers }) => {
 						alt='Edit'
 						className='edit'
 						onClick={e => {
-							editMember(e, cell, setMembers, table, cell.row);
+							handleKeyDown(e, table, cell.row, setIsEditing);
 						}}
 					/>
 				</div>
@@ -228,6 +229,34 @@ const Table = ({ tableData, setMembers }) => {
 		e.stopPropagation();
 		setIsModalOpen(prev => !prev);
 	};
+
+	const handleKeyDown = (e, table, row, setIsEditing) => {
+		setIsEditing(true);
+		editMember(e, table, row, setIsEditing);
+	};
+
+	const removeEditing = (e, rowIndex) => {
+		e.stopPropagation();
+		if (isEditing && e.key === 'Enter') {
+			setIsEditing(false);
+			const newRowState = {};
+			const meta = table.options.meta;
+			table.getRowModel().rows.forEach(row => {
+				newRowState[row.id] = false; // Mark all rows as not editable
+			});
+			meta?.setEditedRows(newRowState);
+		}
+	};
+
+	useEffect(() => {
+		if (isEditing) {
+			document.addEventListener('keydown', e => removeEditing(e));
+		}
+
+		return () => {
+			document.removeEventListener('keydown', e => removeEditing(e));
+		};
+	}, [isEditing]);
 
 	return (
 		<table>

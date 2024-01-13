@@ -42,7 +42,9 @@ export const MySelect = React.forwardRef(
 						<option
 							key={option.value}
 							value={option.value}
-							disabled={index === 0 || option.value === null}>
+							disabled={
+								index === 0 || option.value === 'Select role'
+							}>
 							{option.label}
 						</option>
 					))}

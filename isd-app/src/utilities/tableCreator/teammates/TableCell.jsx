@@ -21,7 +21,7 @@ const TableCell = ({ getValue, row, column, table }) => {
 		tableMeta?.updateData(row.index, column.id, e.target.value);
 	};
 
-	if (tableMeta?.editedRows[row.id]) {
+	if (tableMeta?.editedRows[row.id] && initialValue) {
 		return columnMeta?.type === 'select' ? (
 			<select
 				className='edit-input'
