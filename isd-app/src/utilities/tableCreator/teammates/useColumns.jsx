@@ -1,4 +1,6 @@
 import { useMemo } from 'react';
+import TableCell from './TableCell';
+import options from '../../../pages/TeamMembers/options';
 
 const useColumns = () => {
 	return useMemo(
@@ -6,26 +8,39 @@ const useColumns = () => {
 			{
 				header: 'Name',
 				accessorKey: 'name',
-				cell: info => info.getValue(),
+				cell: TableCell,
 				footer: props => props.column.id,
+				meta: {
+					type: 'text',
+				},
 			},
 			{
 				header: 'Status',
 				accessorKey: 'status',
-				cell: info => info.getValue(),
+				cell: TableCell,
 				footer: props => props.column.id,
+				meta: {
+					type: 'boolean',
+				},
 			},
 			{
 				header: 'Role',
 				accessorKey: 'role',
-				cell: info => info.getValue(),
+				cell: TableCell,
 				footer: props => props.column.id,
+				meta: {
+					type: 'select',
+					options: options,
+				},
 			},
 			{
 				header: 'Email address',
 				accessorKey: 'email',
-				cell: info => info.getValue(),
+				cell: TableCell,
 				footer: props => props.column.id,
+				meta: {
+					type: 'text',
+				},
 			},
 			{
 				header: '',

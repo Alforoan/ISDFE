@@ -12,12 +12,15 @@ import {
 	useReactTable,
 } from '@tanstack/react-table';
 import { deleteMember, editMember } from './apiFunctions';
+import TeammatesModal from '../../modals/TeammatesModal/TeammatesModal';
 
 const Table = ({ tableData, setMembers }) => {
 	const [data, setData] = useState([]);
+	const [editedRows, setEditedRows] = useState({});
 	const [sorting, setSorting] = useState([]);
 	const isResizingRef = useRef(false);
 	const columns = useColumns();
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	useEffect(() => {
 		setData(tableData);
@@ -36,6 +39,23 @@ const Table = ({ tableData, setMembers }) => {
 		onSortingChange: setSorting,
 		getCoreRowModel: getCoreRowModel(),
 		getSortedRowModel: getSortedRowModel(),
+		meta: {
+			editedRows,
+			setEditedRows,
+			updateData: (rowIndex, columnId, value) => {
+				setData(old =>
+					old.map((row, index) => {
+						if (index === rowIndex) {
+							return {
+								...old[rowIndex],
+								[columnId]: value,
+							};
+						}
+						return row;
+					}),
+				);
+			},
+		},
 		debugTable: true, //remove for production
 	});
 
@@ -81,19 +101,7 @@ const Table = ({ tableData, setMembers }) => {
 									header.column.getToggleSortingHandler()(e);
 								}
 							}}
-							style={{ width: header.getSize() }}
-							onMouseEnter={() => {
-								if (isResizingRef) {
-									header.column.getResizerElement().style.opacity =
-										'0';
-								}
-							}}
-							onMouseLeave={() => {
-								if (!isResizingRef) {
-									header.column.getResizerElement().style.opacity =
-										'1';
-								}
-							}}>
+							style={{ width: header.getSize() }}>
 							{header.isPlaceholder ? null : (
 								<div>
 									{flexRender(
@@ -170,7 +178,7 @@ const Table = ({ tableData, setMembers }) => {
 						alt='Edit'
 						className='edit'
 						onClick={e => {
-							editMember(e, cell, setMembers);
+							editMember(e, cell, setMembers, table, cell.row);
 						}}
 					/>
 				</div>
@@ -215,21 +223,10 @@ const Table = ({ tableData, setMembers }) => {
 	};
 
 	// Api helper function
-	const [invitations, setInvitations] = useState([
-		{ name: '', email: '', role: '', status: false },
-	]);
 
-	const addTeammates = () => {
-		setInvitations([
-			...invitations,
-			{ name: '', email: '', role: '', status: false },
-		]);
-	};
-
-	const removeTeammates = () => {
-		if (invitations.length > 1) {
-			setInvitations([...invitations.slice(0, invitations.length - 1)]);
-		}
+	const openModal = e => {
+		e.stopPropagation();
+		setIsModalOpen(prev => !prev);
 	};
 
 	return (
@@ -243,14 +240,22 @@ const Table = ({ tableData, setMembers }) => {
 			</thead>
 			<tbody>
 				{renderTableBody()}
-				<tr
-					className='table-body-row add-teammates'
-					onClick={addTeammates}>
-					<td className='add-teammates-text' colSpan={columns.length}>
+				<tr className='table-body-row add-teammates'>
+					<td
+						className='add-teammates-text'
+						colSpan={columns.length}
+						onClick={e => {
+							openModal(e);
+						}}>
 						+ Add teammates
 					</td>
 				</tr>
 			</tbody>
+			<TeammatesModal
+				isModalOpen={isModalOpen}
+				setIsModalOpen={setIsModalOpen}
+				setMembers={setMembers}
+			/>
 		</table>
 	);
 };

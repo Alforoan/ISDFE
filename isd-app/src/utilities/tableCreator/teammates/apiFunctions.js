@@ -9,11 +9,15 @@ export const deleteMember = (e, cell, setMembers) => {
 	);
 };
 
-export const editMember = (e, cell, setMembers, editMemberData) => {
+export const editMember = (e, cell, setMembers, table, row) => {
 	e.stopPropagation();
+	// For now we directly edit the local array
+	const meta = table.options.meta;
+	meta?.setEditedRows(old => ({
+		...old,
+		[row.id]: !old[row.id],
+	}));
 
 	// Using the id api post call needs to be made
 	const memberId = cell.row.original.id;
-
-	// For now we directly edit the local array
 };
