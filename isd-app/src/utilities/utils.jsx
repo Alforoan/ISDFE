@@ -33,7 +33,7 @@ export const MySelect = React.forwardRef(
 				<label htmlFor={id ?? name}>{label}</label>
 				<select
 					className='role-selector'
-					defaultValue={options[0].value}
+					defaultValue={options[0].label}
 					id={id ?? name}
 					name={name}
 					{...rest}
@@ -41,7 +41,7 @@ export const MySelect = React.forwardRef(
 					{options.map((option, index) => (
 						<option
 							key={option.value}
-							value={option.value}
+							value={option.label}
 							disabled={
 								index === 0 || option.value === 'Select role'
 							}>

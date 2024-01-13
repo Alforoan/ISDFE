@@ -28,7 +28,7 @@ const TableCell = ({ getValue, row, column, table }) => {
 				onChange={onSelectChange}
 				value={initialValue}>
 				{columnMeta?.options?.map(option => (
-					<option key={option.value} value={option.value}>
+					<option key={option.value} value={option.label}>
 						{option.label}
 					</option>
 				))}
