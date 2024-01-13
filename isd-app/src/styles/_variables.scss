@@ -13,6 +13,7 @@ $font-size-medium: 2rem;
 $font-size-regular: 1.5rem;
 $font-size-semi-regular: 1.125rem;
 $font-size-small: 1rem;
+$font-size-extra-small: 0.75rem;
 
 @font-face {
 	font-family: 'Inter';
@@ -53,7 +54,9 @@ $font-size-small: 1rem;
 $default-background: #f6f8fa;
 $form-white-background: #fff;
 $button-blue-background: #0774c3;
+$button-purple-background: var(--Brand-50, #f9f5ff);
 
 //font Colors
 $font-color-white: #fff;
 $font-color-grey: #767676;
+$font-color-purple: var(--Brand-700, #6941c6);
