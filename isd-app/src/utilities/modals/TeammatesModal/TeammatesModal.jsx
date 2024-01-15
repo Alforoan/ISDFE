@@ -79,6 +79,7 @@ const TeammatesModal = ({ isModalOpen, setIsModalOpen, setMembers }) => {
 
 	const {
 		register,
+		unregister,
 		handleSubmit,
 		formState: { errors, isSubmitting },
 		reset,
@@ -120,6 +121,12 @@ const TeammatesModal = ({ isModalOpen, setIsModalOpen, setMembers }) => {
 		const memberId = item.id;
 
 		if (addCount.length > 1) {
+			unregister([
+				`${item.id}_name`,
+				`${item.id}_email`,
+				`${item.id}_role`,
+			]);
+
 			setAddCount(prevMembers =>
 				prevMembers.filter(member => member.id !== memberId),
 			);
