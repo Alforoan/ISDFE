@@ -11,8 +11,10 @@ $fontWeightRegular: 400;
 $font-size-large: 3rem;
 $font-size-medium: 2rem;
 $font-size-regular: 1.5rem;
+$font-size-half-regular: 1.25rem;
 $font-size-semi-regular: 1.125rem;
 $font-size-small: 1rem;
+$font-size-semi-small: 0.875rem;
 $font-size-extra-small: 0.75rem;
 
 @font-face {
@@ -55,8 +57,15 @@ $default-background: #f6f8fa;
 $form-white-background: #fff;
 $button-blue-background: #0774c3;
 $button-purple-background: var(--Brand-50, #f9f5ff);
+$current-menu-step-background: #A4C8FF;
+$next-menu-step-background:#F2F2F2;
+$completed-menu-step-background: #fff;
 
 //font Colors
 $font-color-white: #fff;
 $font-color-grey: #767676;
 $font-color-purple: var(--Brand-700, #6941c6);
+$font-color-black: #000;
+$font-color-darker-grey: #5C5C5C;
+$font-color-one-more-grey: var(--Black-40, 
+rgba(17, 17, 19, 0.4));

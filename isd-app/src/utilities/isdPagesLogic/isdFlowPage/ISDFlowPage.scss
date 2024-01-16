@@ -1,0 +1,28 @@
+@import '../../../styles/variables';
+
+.isd-flow-container {
+    display: flex;
+    color: $font-color-black;
+    flex-direction: column;
+    padding: 3rem 5rem;
+    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+	height: 100%;
+	width: 100vw;
+    background-color: $default-background;
+    gap: 2.1875rem;
+
+    .isd-flow-title {
+        font-weight: $fontWeightBold;
+        font-size: $font-size-large;
+    }
+
+    .isd-flow-content {
+        display: flex;
+        gap: 1.25rem;
+
+        .isd-flow-form-container {
+            flex: 0 1 55%;
+        }
+    }
+}
+
