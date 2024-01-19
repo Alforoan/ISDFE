@@ -9,3 +9,4 @@ export { default as AccountSetUpCompanyName } from './AccountSetUp/CompanyName/C
 export { default as Users } from './AccountSetUp/Users/Users';
 export { default as Error } from './Error/Error';
 export { default as TeamMembers } from './TeamMembers/TeamMembers';
+export { default as ISDFlowNeedsAnalysis} from './ISDFlow/NeedsAnalysis/NeedsAnalysis';
