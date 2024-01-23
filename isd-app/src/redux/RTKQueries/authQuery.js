@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const authApi = createApi({
 	reducerPath: 'authApi',
 	baseQuery: fetchBaseQuery({
-		baseUrl: 'http://localhost:3093',
+		baseUrl: 'http://localhost:3000',
 		prepareHeaders(headers) {
 			headers.set('Accept', 'application/json');
 			headers.set('Content-Type', 'application/json');
@@ -20,14 +20,14 @@ export const authApi = createApi({
 		}),
 		signup: builder.mutation({
 			query: userInfo => ({
-				url: '/signup',
+				url: '/api/auth/register',
 				method: 'POST',
 				body: userInfo,
 			}),
 		}),
 		signin: builder.mutation({
 			query: userInfo => ({
-				url: '/signin',
+				url: '/api/auth/login',
 				method: 'POST',
 				body: userInfo,
 			}),
