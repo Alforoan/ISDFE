@@ -72,10 +72,18 @@
         }
         .cancel {
             background-color: $form-white-background;
+
+            &:hover {
+                border-color: $current-menu-step-background;
+            }
         }
         .next {
             color: $font-color-white;
             background-color: $button-blue-background;
+
+            &:hover {
+					background-color: darken($button-blue-background, 10%);
+				}
         }
     }
 }

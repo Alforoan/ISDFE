@@ -7,14 +7,18 @@ import { MyInput, MyTextArea } from "../../../utilities/utils";
 
 const errorSchema = yup.object({}).required();
 
-const submitNeedsAnalysisForm = async (data) => {
-  console.log(data);
-};
-
 const NeedsAnalysisForm = ({ currentStep }) => {
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(errorSchema),
   });
+
+  const submitNeedsAnalysisForm = async (data) => {
+    console.log(data);
+  };
+
+  const handleCancelClick = () => {
+    reset();
+  };
 
   return (
     <form
@@ -163,7 +167,13 @@ const NeedsAnalysisForm = ({ currentStep }) => {
       </fieldset>
       <div className="button-container">
         <button className="button next">Next</button>
-        <button className="button cancel">Cancel</button>
+        <button
+          className="button cancel"
+          type="button"
+          onClick={handleCancelClick}
+        >
+          Cancel
+        </button>
       </div>
     </form>
   );

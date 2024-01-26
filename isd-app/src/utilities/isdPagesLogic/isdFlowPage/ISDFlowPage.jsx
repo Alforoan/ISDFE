@@ -7,12 +7,14 @@ const ISDFlowPage = ({ currentStep, children }) => {
   const courseName = "Reducing issues in manufacturing workflow";
 
   return (
-    <div className="isd-flow-container">
-      <h3 className="isd-flow-title">Course name: {courseName}</h3>
-      <div className="isd-flow-content">
-        <StepsMenu currentStep={currentStep} />
-        <div className="isd-flow-form-container">{children}</div>
-        <ProjectInfo />
+    <div className="isd-flow-wrapper">
+      <div className="isd-flow-container">
+        <h3 className="isd-flow-title">Course name: {courseName}</h3>
+        <div className="isd-flow-content">
+          <StepsMenu currentStep={currentStep} />
+          <div className="isd-flow-form-container">{children}</div>
+          <ProjectInfo />
+        </div>
       </div>
     </div>
   );
