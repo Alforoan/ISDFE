@@ -2,7 +2,7 @@ import { logOut } from '../../redux/slices/authSlice';
 import './CancelButton.scss';
 import { useDispatch } from 'react-redux';
 
-const CancelButton = ({ text }) => {
+const CancelButton = () => {
 	const dispatch = useDispatch();
 
 	const handleLogout = () => {
@@ -12,7 +12,7 @@ const CancelButton = ({ text }) => {
 	return (
 		<>
 			<button onClick={handleLogout} className='btn-blue'>
-				{text}
+				Sign Out
 			</button>
 		</>
 	);
