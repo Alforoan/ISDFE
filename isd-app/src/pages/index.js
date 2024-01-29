@@ -10,3 +10,4 @@ export { default as Users } from './AccountSetUp/Users/Users';
 export { default as Error } from './Error/Error';
 export { default as TeamMembers } from './TeamMembers/TeamMembers';
 export { default as ISDFlowNeedsAnalysis} from './ISDFlow/NeedsAnalysis/NeedsAnalysis';
+export {default as Objective} from './ISDFlow/Objective/Objective'

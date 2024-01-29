@@ -18,6 +18,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useGetAuthStatusQuery } from './redux/RTKQueries/authQuery';
 import { logIn, logOut } from './redux/slices/authSlice';
 
+
+
 function App() {
 	const dispatch = useDispatch();
 	const { data, error } = useGetAuthStatusQuery();
@@ -52,6 +54,7 @@ function App() {
 
 				<Route path='/members' element={<TeamMembers />} />
 
+
 				<Route
 					path='/accountsetup/name_password'
 					element={<AccountSetUpNamePassword />}
@@ -73,6 +76,7 @@ function App() {
 			</Routes>
 		</Router>
 	);
+
 }
 
 export default App;
