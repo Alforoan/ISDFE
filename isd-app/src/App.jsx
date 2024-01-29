@@ -8,6 +8,7 @@ import {
   AccountSetUpEmail,
   AccountSetUpNamePassword,
   AccountSetUpCompanyName,
+  Objective,
   Users,
   Error,
   TeamMembers,
@@ -17,6 +18,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useGetAuthStatusQuery } from "./redux/RTKQueries/authQuery";
 import { logIn, logOut } from "./redux/slices/authSlice";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -58,6 +60,10 @@ function App() {
         <Route
           path="/isdflow/needsanalysis"
           element={<ISDFlowNeedsAnalysis />}
+        />
+        <Route
+          path={"/isdflow/objective"}
+          element={<Objective/>}
         />
         <Route path="*" element={<Error />} />
       </Routes>
