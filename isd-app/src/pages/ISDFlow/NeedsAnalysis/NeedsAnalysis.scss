@@ -85,5 +85,9 @@
 					background-color: darken($button-blue-background, 10%);
 				}
         }
+        .back{
+            color: $font-color-black;
+            background-color: $default-background;
+        }
     }
 }

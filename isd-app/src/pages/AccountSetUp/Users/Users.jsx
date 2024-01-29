@@ -48,7 +48,7 @@ const AccountSetUpUsers = () => {
 	};
 
 	const [invitations, setInvitations] = useState([
-		{ email: '', role: '' }, // Initial object
+		{ email: '', role: '' },
 	]);
 
 	const handleInputChange = (value, index, field) => {
@@ -87,7 +87,6 @@ const AccountSetUpUsers = () => {
 										if(value===undefined || value.length===0 || email.test(value)){
 											resolve();
 										}else{
-
 											reject("Input should be a valid email");
 										}
 									})
