@@ -9,6 +9,7 @@ import Delete from '../../../assets/icons/trash.svg';
 import { yupResolver } from '@hookform/resolvers/yup';
 import formDataFormatter from './formDataFormatter';
 import options from '../../../pages/TeamMembers/options';
+import useCompanyMembersApi from '../../formPostLogic/companyMembersApi';
 
 const customStyles = {
 	content: {
@@ -63,17 +64,13 @@ const generateValidationSchema = objectKeys => {
 	return yup.object(objectSchema).required();
 };
 
-const TeammatesModal = ({
-	isModalOpen,
-	setIsModalOpen,
-	setMembers,
-	submitFormFunc,
-}) => {
+const TeammatesModal = ({ isModalOpen, setIsModalOpen, setMembers, data }) => {
 	const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 	const [submitError, setSubmitError] = useState(false);
 	const [addCount, setAddCount] = useState([
 		{ name: '', email: '', role: '', id: uuidv4() },
 	]);
+	const { submitForm } = useCompanyMembersApi();
 
 	const closeModal = () => {
 		setIsModalOpen(false);
@@ -99,13 +96,14 @@ const TeammatesModal = ({
 			setShowSuccessMessage(false);
 			setSubmitError(false);
 
-			//! change this later need to add member adding
+			//! Enable this when api is active!!!!!
+			//! the error handling on the form won't pass without api enabled
+			// await submitForm([...data, ...formattedData]);
 
-			setMembers(prev => [...prev, ...formattedData]);
+			await setMembers(prev => [...prev, ...formattedData]);
+
 			setShowSuccessMessage(true);
 			setIsModalOpen(false);
-
-			submitFormFunc([...prev, ...formattedData]);
 		} catch (error) {
 			setSubmitError(true);
 		}

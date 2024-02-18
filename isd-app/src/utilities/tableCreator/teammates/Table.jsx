@@ -32,6 +32,7 @@ const Table = ({ tableData, setMembers }) => {
 	}, [tableData]);
 
 	const submitFormFunc = members => {
+		console.log('test');
 		// In the backend they should take the members data and post all the new members
 		// Also Update the members that have been edited so
 		// We are just posting the data to them.
@@ -393,7 +394,7 @@ const Table = ({ tableData, setMembers }) => {
 				isModalOpen={isModalOpen}
 				setIsModalOpen={setIsModalOpen}
 				setMembers={setMembers}
-				submitFormFunc={submitFormFunc}
+				data={data}
 			/>
 		</table>
 	);
