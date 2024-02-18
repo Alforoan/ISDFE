@@ -31,8 +31,7 @@ const Table = ({ tableData, setMembers }) => {
 		setData(tableData);
 	}, [tableData]);
 
-	const submitFormFunc = (e, members) => {
-		e.stopPropagation();
+	const submitFormFunc = members => {
 		// In the backend they should take the members data and post all the new members
 		// Also Update the members that have been edited so
 		// We are just posting the data to them.
@@ -345,7 +344,7 @@ const Table = ({ tableData, setMembers }) => {
 			});
 			meta?.setEditedRows(newRowState);
 
-			submitFormFunc(e, data);
+			submitFormFunc(data);
 		} else if (
 			isEditing &&
 			e.key === 'Enter' &&
@@ -394,6 +393,7 @@ const Table = ({ tableData, setMembers }) => {
 				isModalOpen={isModalOpen}
 				setIsModalOpen={setIsModalOpen}
 				setMembers={setMembers}
+				submitFormFunc={submitFormFunc}
 			/>
 		</table>
 	);

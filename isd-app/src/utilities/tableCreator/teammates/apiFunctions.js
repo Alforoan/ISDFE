@@ -28,7 +28,7 @@ export const editMember = (
 			[row.id]: !old[row.id],
 		}));
 
-		data ? submitFormFunc(e, data) : null;
+		data ? submitFormFunc(data) : null;
 	} else {
 		alert(
 			'Please check the format for the inputs, (correct email syntax and first and name last).',

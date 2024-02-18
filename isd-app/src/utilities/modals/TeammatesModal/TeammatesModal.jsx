@@ -63,7 +63,12 @@ const generateValidationSchema = objectKeys => {
 	return yup.object(objectSchema).required();
 };
 
-const TeammatesModal = ({ isModalOpen, setIsModalOpen, setMembers }) => {
+const TeammatesModal = ({
+	isModalOpen,
+	setIsModalOpen,
+	setMembers,
+	submitFormFunc,
+}) => {
 	const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 	const [submitError, setSubmitError] = useState(false);
 	const [addCount, setAddCount] = useState([
@@ -99,6 +104,8 @@ const TeammatesModal = ({ isModalOpen, setIsModalOpen, setMembers }) => {
 			setMembers(prev => [...prev, ...formattedData]);
 			setShowSuccessMessage(true);
 			setIsModalOpen(false);
+
+			submitFormFunc([...prev, ...formattedData]);
 		} catch (error) {
 			setSubmitError(true);
 		}
