@@ -85,7 +85,6 @@
 	display: flex;
 	padding: 1.25rem 1.5rem;
 	width: 100%;
-	justify-content: space-between;
 	align-items: center;
 	align-self: stretch;
 
@@ -112,24 +111,6 @@
 
 	&:active {
 		color: #053e67;
-	}
-}
-
-.save-button-members {
-	max-width: 50px;
-	white-space: nowrap;
-
-	button {
-		background-color: #0774c3;
-		color: #fff;
-
-		&:hover {
-			opacity: 0.7;
-		}
-
-		&:active {
-			color: #053e67;
-		}
 	}
 }
 

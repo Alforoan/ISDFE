@@ -388,12 +388,6 @@ const Table = ({ tableData, setMembers }) => {
 						}}>
 						+ Add teammates
 					</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td className='save-button-members'>
-						<button>Save</button>
-					</td>
 				</tr>
 			</tbody>
 			<TeammatesModal
