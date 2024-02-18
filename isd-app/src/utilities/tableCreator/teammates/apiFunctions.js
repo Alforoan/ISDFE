@@ -9,14 +9,29 @@ export const deleteMember = (e, cell, setMembers) => {
 	);
 };
 
-export const editMember = (e, table, row) => {
+export const editMember = (
+	e,
+	table,
+	row,
+	setIsEditing,
+	inputErrors,
+	data,
+	submitFormFunc,
+) => {
 	e.stopPropagation();
-	// For now we directly edit the local array
-	const meta = table.options.meta;
-	meta?.setEditedRows(old => ({
-		...old,
-		[row.id]: !old[row.id],
-	}));
 
-	// Using the id api post call needs to be made
+	if (Object.values(inputErrors).every(error => error === null)) {
+		// For now we directly edit the local array
+		const meta = table.options.meta;
+		meta?.setEditedRows(old => ({
+			...old,
+			[row.id]: !old[row.id],
+		}));
+
+		data ? submitFormFunc(e, data) : null;
+	} else {
+		alert(
+			'Please check the format for the inputs, (correct email syntax and first and name last).',
+		);
+	}
 };

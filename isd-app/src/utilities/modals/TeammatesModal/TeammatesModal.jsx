@@ -92,20 +92,15 @@ const TeammatesModal = ({ isModalOpen, setIsModalOpen, setMembers }) => {
 		try {
 			// Clearing success message if still shown
 			setShowSuccessMessage(false);
+			setSubmitError(false);
 
 			//! change this later need to add member adding
-			setTimeout(() => {
-				setMembers(prev => [...prev, ...formattedData]);
-				setShowSuccessMessage(true);
-				setShowSuccessMessage(false);
-				setIsModalOpen(false);
-			}, 2000);
+
+			setMembers(prev => [...prev, ...formattedData]);
+			setShowSuccessMessage(true);
+			setIsModalOpen(false);
 		} catch (error) {
 			setSubmitError(true);
-
-			setTimeout(() => {
-				setSubmitError(false);
-			}, 3000);
 		}
 		reset();
 	};
