@@ -47,9 +47,7 @@ const AccountSetUpUsers = () => {
 		}
 	};
 
-	const [invitations, setInvitations] = useState([
-		{ email: '', role: '' },
-	]);
+	const [invitations, setInvitations] = useState([{ email: '', role: '' }]);
 
 	const handleInputChange = (value, index, field) => {
 		const newInvitations = [...invitations];
@@ -60,12 +58,12 @@ const AccountSetUpUsers = () => {
 	const addTeammates = () => {
 		setInvitations([...invitations, { email: '', role: '' }]);
 	};
-	const removeTeammates=()=>{
-		if(invitations.length>1){
-			setInvitations([...invitations.slice(0,invitations.length-1)]);
+	const removeTeammates = () => {
+		if (invitations.length > 1) {
+			setInvitations([...invitations.slice(0, invitations.length - 1)]);
 		}
-	}
-	const  email=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+	};
+	const email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 	return (
 		<div className='form-container account-setup'>
 			<Form
@@ -81,17 +79,34 @@ const AccountSetUpUsers = () => {
 				{invitations.map((item, index) => (
 					<Flex key={index} gap={'middle'}>
 						<div className='email-role-container'>
-							<Form.Item label='Email' name={`email${index}`} rules={[{ required: true, message: 'Please input email' },{
-								validator(rule,value){
-									return new Promise((resolve,reject)=>{
-										if(value===undefined || value.length===0 || email.test(value)){
-											resolve();
-										}else{
-											reject("Input should be a valid email");
-										}
-									})
-								}
-							}]}>
+							<Form.Item
+								label='Email'
+								name={`email${index}`}
+								rules={[
+									{
+										required: true,
+										message: 'Please input email',
+									},
+									{
+										validator(rule, value) {
+											return new Promise(
+												(resolve, reject) => {
+													if (
+														value === undefined ||
+														value.length === 0 ||
+														email.test(value)
+													) {
+														resolve();
+													} else {
+														reject(
+															'Input should be a valid email',
+														);
+													}
+												},
+											);
+										},
+									},
+								]}>
 								<Input
 									placeholder='input email'
 									value={item.email}
@@ -104,7 +119,15 @@ const AccountSetUpUsers = () => {
 									}
 								/>
 							</Form.Item>
-							<Form.Item label='Role' name={`role${index}`} rules={[{required:true,message: 'Please select a role'}]}>
+							<Form.Item
+								label='Role'
+								name={`role${index}`}
+								rules={[
+									{
+										required: true,
+										message: 'Please select a role',
+									},
+								]}>
 								<Select
 									className='select'
 									options={options}
@@ -118,22 +141,27 @@ const AccountSetUpUsers = () => {
 						</div>
 					</Flex>
 				))}
-				<Flex  style={{width:"100%"}} align={"center"} justify={"space-between"} >
-				<label
-					onClick={addTeammates}
-					style={{
-						cursor: 'pointer',
-						color: '#0774c3',
-					}}>
-					+ Add teammates
-				</label>
+				<Flex
+					style={{ width: '100%' }}
+					align={'center'}
+					justify={'space-between'}>
+					<label
+						onClick={addTeammates}
+						style={{
+							cursor: 'pointer',
+							color: '#0774c3',
+						}}>
+						+ Add teammates
+					</label>
 					<label
 						onClick={removeTeammates}
 						style={{
-							cursor: invitations.length>1 ? 'pointer':'not-allowed',
-							color: invitations.length>1 ? "red":"gray",
-						}}
-					>
+							cursor:
+								invitations.length > 1
+									? 'pointer'
+									: 'not-allowed',
+							color: invitations.length > 1 ? 'red' : 'gray',
+						}}>
 						-Remove teammates
 					</label>
 				</Flex>

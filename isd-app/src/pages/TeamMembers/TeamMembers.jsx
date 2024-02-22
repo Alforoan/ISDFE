@@ -9,38 +9,40 @@ import { useEffect } from 'react';
 const TeamMembers = () => {
 	const navigate = useNavigate();
 
+	//Make api call here and set to setMembers instead of using dummy data.
+
 	const [members, setMembers] = useState([
 		{
 			id: 1,
-			name: 'Jake',
+			name: 'Jake Jill',
 			status: true,
 			role: 'Stakeholder',
 			email: 'da@da.com',
 		},
 		{
 			id: 2,
-			name: 'Justin',
+			name: 'Justin Trudeau',
 			status: true,
 			role: 'Stakeholder',
 			email: 'da33@d33a.com',
 		},
 		{
 			id: 3,
-			name: 'Bill',
+			name: 'Bill Hader',
 			status: false,
 			role: 'Product Manager',
 			email: 'Bill@Bill.com',
 		},
 		{
 			id: 4,
-			name: 'Sammy',
+			name: 'Sammy Sosa',
 			status: true,
 			role: 'ISD',
 			email: 'Sammy@Sammy.com',
 		},
 		{
 			id: 5,
-			name: 'Steve',
+			name: 'Steve Irwin',
 			status: false,
 			role: 'Product Manager',
 			email: 'Steve@Steve.com',
@@ -59,7 +61,9 @@ const TeamMembers = () => {
 						<div>Team members</div>
 						<div className='user-count'>{members.length} users</div>
 					</div>
-					<Table tableData={members} setMembers={setMembers} />
+					{members && (
+						<Table tableData={members} setMembers={setMembers} />
+					)}
 				</div>
 			</div>
 		</main>

@@ -13,6 +13,7 @@ import {
 } from '@tanstack/react-table';
 import { deleteMember, editMember } from './apiFunctions';
 import TeammatesModal from '../../modals/TeammatesModal/TeammatesModal';
+import useCompanyMembersApi from '../../formPostLogic/companyMembersApi';
 
 const Table = ({ tableData, setMembers }) => {
 	const [data, setData] = useState([]);
@@ -22,10 +23,21 @@ const Table = ({ tableData, setMembers }) => {
 	const columns = useColumns();
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [isEditing, setIsEditing] = useState(false);
+	const { submitForm } = useCompanyMembersApi();
+	const [inputErrors, setInputErrors] = useState({});
+	let errors = {};
 
 	useEffect(() => {
 		setData(tableData);
 	}, [tableData]);
+
+	const submitFormFunc = members => {
+		console.log('test');
+		// In the backend they should take the members data and post all the new members
+		// Also Update the members that have been edited so
+		// We are just posting the data to them.
+		submitForm(members);
+	};
 
 	const table = useReactTable({
 		data,
@@ -189,6 +201,26 @@ const Table = ({ tableData, setMembers }) => {
 		}
 	};
 
+	// const renderErrors = (row, cell) => {
+	// 	console.log(inputErrors, 'errors check');
+
+	// 	if (
+	// 		cell.column.columnDef.header === 'Name' &&
+	// 		inputErrors.name &&
+	// 		cell.id in inputErrors
+	// 	) {
+	// 		return errs
+	// 	}
+	// 	if (
+	// 		cell.column.columnDef.header === 'Email address' &&
+	// 		inputErrors.email &&
+	// 		cell.id in inputErrors
+	// 	) {
+	// 		alert('Syntax for email address is incorrect');
+	// 	}
+	// 	return ' ';
+	// };
+
 	const renderTableBody = () => {
 		return (
 			<>
@@ -213,6 +245,7 @@ const Table = ({ tableData, setMembers }) => {
 												width: cell.column.getSize(),
 											}}>
 											{uniqueRenders(cell)}
+											{/* <p>{renderErrors(row, cell)}</p> */}
 										</td>
 									);
 								})}
@@ -232,12 +265,78 @@ const Table = ({ tableData, setMembers }) => {
 
 	const handleKeyDown = (e, table, row, setIsEditing) => {
 		setIsEditing(true);
-		editMember(e, table, row, setIsEditing);
+		editMember(
+			e,
+			table,
+			row,
+			setIsEditing,
+			inputErrors,
+			data,
+			submitFormFunc,
+		);
 	};
 
-	const removeEditing = (e, rowIndex) => {
+	const removeEditing = e => {
 		e.stopPropagation();
-		if (isEditing && e.key === 'Enter') {
+
+		const isValidEmail = email => {
+			const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			return emailRegex.test(email);
+		};
+
+		const isValidName = name => {
+			const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+			return nameRegex.test(name);
+		};
+
+		// const findRowWithIndex = td => {
+		// 	let rowIndex = 0;
+		// 	let parentNode = td.parentNode.parentNode.parentNode;
+
+		// 	for (let i = 0; i < parentNode.children.length; i++) {
+		// 		const row = parentNode.children[i];
+		// 		if (row.contains(td)) {
+		// 			rowIndex = i;
+		// 			break;
+		// 		}
+		// 	}
+
+		// 	return rowIndex;
+		// };
+
+		// const input = e.target;
+
+		// const { rowIndex } = findRowWithIndex(input);
+		// console.log(rowIndex, 'index check');
+
+		if (e.target.id === 'email-input') {
+			const email = e.target.value;
+			if (!isValidEmail(email)) {
+				errors['email'] = 'Invalid email Address';
+			} else {
+				errors['email'] = null;
+			}
+		}
+
+		if (e.target.id === 'name-input') {
+			const name = e.target.value;
+			if (!isValidName(name)) {
+				errors['name'] = 'Invalid name format';
+			} else {
+				errors['name'] = null;
+			}
+		}
+
+		setInputErrors(prev => ({
+			...prev,
+			...errors,
+		}));
+
+		if (
+			isEditing &&
+			e.key === 'Enter' &&
+			Object.values(errors).every(error => error === null)
+		) {
 			setIsEditing(false);
 			const newRowState = {};
 			const meta = table.options.meta;
@@ -245,6 +344,17 @@ const Table = ({ tableData, setMembers }) => {
 				newRowState[row.id] = false; // Mark all rows as not editable
 			});
 			meta?.setEditedRows(newRowState);
+
+			submitFormFunc(data);
+		} else if (
+			isEditing &&
+			e.key === 'Enter' &&
+			Object.values(errors).some(error => error !== null)
+		) {
+			alert(
+				'Please check the format for the inputs, (correct email syntax and first and name last).',
+			);
+			return;
 		}
 	};
 
@@ -284,6 +394,7 @@ const Table = ({ tableData, setMembers }) => {
 				isModalOpen={isModalOpen}
 				setIsModalOpen={setIsModalOpen}
 				setMembers={setMembers}
+				data={data}
 			/>
 		</table>
 	);
