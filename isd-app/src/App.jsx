@@ -18,6 +18,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useGetAuthStatusQuery } from "./redux/RTKQueries/authQuery";
 import { logIn, logOut } from "./redux/slices/authSlice";
+import FinalAssessmentStrategy from "./pages/ISDFlow/FinalAssessmentStrategy/FinalAssessmentStrategy";
+import CourseStructure from "./pages/ISDFlow/CourseStructure/CourseStructure.jsx";
 
 
 function App() {
@@ -44,9 +46,7 @@ function App() {
         <Route path="/request" element={<Request />} />
         <Route path="/courserequest" element={<CourseRequest />} />
         <Route path="/accountsetup/email" element={<AccountSetUpEmail />} />
-
         <Route path="/members" element={<TeamMembers />} />
-
         <Route
           path="/accountsetup/name_password"
           element={<AccountSetUpNamePassword />}
@@ -64,6 +64,14 @@ function App() {
         <Route
           path={"/isdflow/objective"}
           element={<Objective/>}
+        />
+        <Route
+          path={"/isdflow/final"}
+          element={<FinalAssessmentStrategy/>}
+        />
+        <Route
+            path={"/isdflow/course"}
+            element={<CourseStructure/>}
         />
         <Route path="*" element={<Error />} />
       </Routes>
