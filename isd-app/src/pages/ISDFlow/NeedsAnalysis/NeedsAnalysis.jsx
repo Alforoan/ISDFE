@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ISDFlowPage from "../../../utilities/isdPagesLogic/isdFlowPage/ISDFlowPage";
 import { MyInput, MyTextArea } from "../../../utilities/utils";
+import ShowMore from "../../../utilities/showMore/showMore";
 
 const errorSchema = yup.object({}).required();
 
@@ -31,8 +32,12 @@ const NeedsAnalysisForm = ({ currentStep }) => {
         <div className="field-text">
           This document supports academic needs analysis (reduced) as well as
           organizational (expanded). You must understand the problem this course
-          addresses. Organizational learning analysis are more involved{" "}
-          <span>show more</span>.
+          addresses. Organizational learning analysis are more involved
+          <ShowMore
+            text={[
+              "because we have responsibility for return on investment (e.g., it increases revenue or reduces costs). We can know our audience in organizational learning because it addresses a finite audience. Academic learning, with some exceptions, is open to the universe of learners. If academic learning, the program is responsible for ensuring a reasonable basis for consumption, in organizational learning, the ISD must assess this. Either form of delivery can be affected by change issues.",
+            ]}
+          />
         </div>
       </fieldset>
       <fieldset>
@@ -42,7 +47,16 @@ const NeedsAnalysisForm = ({ currentStep }) => {
           team.
           <br />
           2. We have credible data confirming the extent of the problem (applies
-          primarily to organizational) <span>show more</span>.
+          primarily to organizational).
+          <ShowMore
+            text={[
+              "3. We have a reasonable basis to support potential for ROI in terms of consumption (numbers per - job description required to attend).",
+              "4. We have a clear and measurable success statement.",
+              "5. We document all issues uncovered relevant to potential for or risk to change.",
+              "6. We document the stakeholder’s valuation of a 10% problem metric change.",
+              "7. Our Go/no-go is justified by documented findings.",
+            ]}
+          />
         </div>
       </fieldset>
       <fieldset>
