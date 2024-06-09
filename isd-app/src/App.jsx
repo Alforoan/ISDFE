@@ -1,5 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
+
   Home,
   LogIn,
   SignUp,
@@ -23,19 +24,39 @@ import CourseStructure from "./pages/ISDFlow/CourseStructure/CourseStructure.jsx
 
 
 function App() {
-  const dispatch = useDispatch();
-  const { data, error } = useGetAuthStatusQuery();
+	const dispatch = useDispatch();
+	const { data, error } = useGetAuthStatusQuery();
 
-  useEffect(() => {
-    // Check the authentication status
-    if (data) {
-      dispatch(logIn());
-    }
+	useEffect(() => {
+		// Check the authentication status
+		if (data) {
+			dispatch(logIn());
+		}
 
-    if (error) {
-      dispatch(logOut());
-    }
-  }, [data, error, dispatch]);
+		if (error) {
+			dispatch(logOut());
+		}
+	}, [data, error, dispatch]);
+
+	return (
+		<Router>
+			<Routes>
+				{data ? (
+					<Route path='/' element={<CourseRequest />} />
+				) : (
+					<Route path='/' element={<Home />} />
+				)}
+				<Route path='/login' element={<LogIn />} />
+				<Route path='/signup' element={<SignUp />} />
+				<Route path='/request' element={<Request />} />
+				<Route path='/courserequest' element={<CourseRequest />} />
+				<Route
+					path='/accountsetup/email'
+					element={<AccountSetUpEmail />}
+				/>
+
+				<Route path='/members' element={<TeamMembers />} />
+
 
   return (
     <Router>
@@ -77,6 +98,7 @@ function App() {
       </Routes>
     </Router>
   );
+
 }
 
 export default App;

@@ -43,6 +43,7 @@ const TableCell = ({ getValue, row, column, table }) => {
 					width: '100%',
 				}}
 				type={column.columnDef.meta?.type || 'text'}
+				id={column.id === 'name' ? 'name-input' : 'email-input'}
 			/>
 		);
 	} else {
