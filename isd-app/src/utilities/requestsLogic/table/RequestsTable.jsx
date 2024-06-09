@@ -32,7 +32,6 @@ const info = [
   },
 ];
 
-const rows = info.map((request) => <RequestRow request={request} />);
 
 const RequestsTable = () => {
   return (
@@ -47,7 +46,11 @@ const RequestsTable = () => {
           <th className="actions-header">Actions</th>
         </tr>
       </thead>
-      <tbody>{rows}</tbody>
+      <tbody>
+        {info.map((request, index) => (
+          <RequestRow key={index} request={request} />
+        ))}
+      </tbody>
     </table>
   );
 };

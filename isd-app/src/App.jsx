@@ -3,7 +3,7 @@ import {
   Home,
   LogIn,
   SignUp,
-  Request,
+  Requests,
   CourseRequest,
   AccountSetUpEmail,
   AccountSetUpNamePassword,
@@ -46,7 +46,7 @@ function App() {
         )}
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/request" element={<Request />} />
+        <Route path="/requests" element={<Requests />} />
         <Route path="/courserequest" element={<CourseRequest />} />
         <Route path="/accountsetup/email" element={<AccountSetUpEmail />} />
         <Route path="/members" element={<TeamMembers />} />
