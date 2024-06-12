@@ -1,5 +1,7 @@
 import "./RequestsTable.scss";
 import RequestRow from "./RequestRow";
+import RequestRowSmallScreen from "./RequestRowSmallScreen";
+import { useState, useEffect } from "react";
 
 const info = [
   {
@@ -32,8 +34,30 @@ const info = [
   },
 ];
 
-
 const RequestsTable = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  if (width < 1000) {
+    return (
+      <section className="requests-table-small">
+        {info.map((request, index) => (
+          <RequestRowSmallScreen key={index} request={request} />
+        ))}
+      </section>
+    );
+  }
   return (
     <table className="requests-table">
       <thead className="requests-table-header">
