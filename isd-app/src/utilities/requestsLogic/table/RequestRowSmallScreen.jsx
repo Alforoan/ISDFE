@@ -1,6 +1,7 @@
 import RequestStatus from "./RequestStatus";
 import stages from "./stages";
 import "./RequestRowSmallScreen.scss";
+import DateFormatter from "./DateFormatter.js";
 
 const RequestRowSmallScreen = ({ request }) => {
   return (
@@ -14,7 +15,7 @@ const RequestRowSmallScreen = ({ request }) => {
       <div className="stage-header">Stage</div>
       <div className="stage">{stages[request.stage]}</div>
       <div className="last-updated-header">Last updated</div>
-      <div className="last-updated">{request.lastUpdated}</div>
+      <div className="last-updated">{DateFormatter(request.lastUpdated)}</div>
     </div>
   );
 };
